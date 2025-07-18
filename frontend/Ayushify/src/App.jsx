@@ -2,10 +2,12 @@ import './App.css';
 import Home from './pages/Home';
 import SignIn from './pages/signin';
 import AdminLogin from './pages/Adminlogin';
-import Header from './components/Header';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import AdminDashboard from './pages/Admindashboard';
 import OfficialLogin from './pages/Officiallogin';
 import OfficialDashboard from './pages/Officialdashboard';
+import Header from './components/Header';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import UserDashboard from './pages/Userdashboard';
 
 function App() {
   return (
@@ -28,14 +30,17 @@ function Main() {
       navigate("/auth");
     } else if (role === "Admin") {
       navigate("/admin");
-    }
-    else if (role == "Official"){
+    } else if (role === "Official") {
       navigate("/official");
     }
   };
 
-  // Hide Header on /auth and /admin and /official
-  const hideHeader = location.pathname === "/auth" || location.pathname === "/admin" || location.pathname === "/official";
+  const hideHeader =
+    location.pathname === "/auth" ||
+    location.pathname === "/admin" ||
+    location.pathname === "/official" || 
+    location.pathname === "/admin-dashboard" ||
+    location.pathname === "/user-dashboard";
 
   return (
     <>
@@ -46,8 +51,10 @@ function Main() {
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<SignIn />} />
         <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/official" element={<OfficialLogin/>} />
+        <Route path="/official" element={<OfficialLogin />} />
         <Route path="/official-dashboard" element={<OfficialDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} /> 
+        <Route path="/user-dashboard" element={<UserDashboard />} />
       </Routes>
     </>
   );

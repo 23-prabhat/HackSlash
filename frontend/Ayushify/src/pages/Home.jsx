@@ -23,28 +23,28 @@ export default function Home() {
       description:
         "Yoga is a spiritual and physical discipline that includes breath control, meditation, and body postures for health and relaxation.",
       image:
-        "https://cdn5.vectorstock.com/i/1000x1000/81/44/yoga-logo-design-stock-human-meditation-vector-28078144.jpg",
+        "https://www.fitnessgymyoga.com/wp-content/uploads/2017/05/download-Images-Yoga-yoga-stock-photos-for-free-or-amazingly.jpg",
     },
     {
       title: "Unani",
       description:
         "Unani medicine is based on the principles of Greek medicine, focusing on the balance of bodily fluids and using natural healing techniques.",
       image:
-        "https://thuym.com/cdn/shop/articles/Blog_Post_Cover_Image_3.png?v=1731505627",
+        "https://www.considracare.pk/wp-content/uploads/2023/05/unani-1.jpg",
     },
     {
       title: "Siddha",
       description:
         "Siddha is one of the oldest systems of medicine from South India that uses herbs and minerals for holistic healing.",
       image:
-        "https://thuym.com/cdn/shop/articles/Blog_Post_Cover_Image_3.png?v=1731505627",
+        "https://tse2.mm.bing.net/th/id/OIP.4Gyl874ZY7Y1wWUYKaCqjwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
       title: "Homeopathy",
       description:
         "Homeopathy is a system of alternative medicine based on the principle of treating 'like with like' using natural substances.",
       image:
-        "https://thuym.com/cdn/shop/articles/Blog_Post_Cover_Image_3.png?v=1731505627",
+        "https://homeopathic-college.com/wp-content/uploads/2020/08/shutterstock_659314069-scaled.jpg",
     },
   ];
 
