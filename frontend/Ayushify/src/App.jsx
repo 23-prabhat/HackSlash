@@ -5,6 +5,7 @@ import AdminLogin from './pages/Adminlogin';
 import Header from './components/Header';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import OfficialLogin from './pages/Officiallogin';
+import OfficialDashboard from './pages/Officialdashboard';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function Main() {
     }
   };
 
-  // Hide Header on /auth and /admin
+  // Hide Header on /auth and /admin and /official
   const hideHeader = location.pathname === "/auth" || location.pathname === "/admin" || location.pathname === "/official";
 
   return (
@@ -46,6 +47,7 @@ function Main() {
         <Route path="/auth" element={<SignIn />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/official" element={<OfficialLogin/>} />
+        <Route path="/official-dashboard" element={<OfficialDashboard />} />
       </Routes>
     </>
   );

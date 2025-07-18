@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function OfficialLogin() {
   const [form, setForm] = useState({ email: "", password: "" });
+  const navigate = useNavigate(); // ✅ useNavigate hook
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -10,7 +12,10 @@ export default function OfficialLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Official Login:", form);
-    // Add your backend logic here
+
+    // TODO: Add actual login logic or validation here
+    // If login is successful:
+    navigate("/official-dashboard"); // ✅ Navigate after login
   };
 
   return (
