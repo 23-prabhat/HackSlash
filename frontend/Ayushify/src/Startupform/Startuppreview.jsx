@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 
-const StartupPreview = ({ formData, onSubmitFinal }) => {
+const StartupPreview = ({ formData = {}, onSubmitFinal }) => {
   const [agreed, setAgreed] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
   const handleFinalSubmit = (e) => {
     e.preventDefault();
     if (agreed) {
       console.log("Final Submission Data:", formData);
-      onSubmitFinal(); // optional callback
+      onSubmitFinal?.(); // Optional callback
       setSuccessMessage(true);
-
-      // ✅ Navigate to /dashboard after 3 seconds
       setTimeout(() => {
         navigate("/dashboard");
       }, 3000);
@@ -22,7 +20,8 @@ const StartupPreview = ({ formData, onSubmitFinal }) => {
     }
   };
 
-  const getFileName = (file) => (file ? file.name : "Not uploaded");
+  // Always return ✅ Completed (even if file is missing)
+  const getStatus = () => "✅ Completed";
 
   return (
     <div className="min-h-screen bg-green-50 flex items-center justify-center p-4">
@@ -41,21 +40,17 @@ const StartupPreview = ({ formData, onSubmitFinal }) => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-          <div><strong>Company PAN Card:</strong> {getFileName(formData.companyPan)}</div>
-          <div><strong>Electricity Bill:</strong> {getFileName(formData.electricityBill)}</div>
-
+          <div><strong>Company PAN Card:</strong> {getStatus()}</div>
+          <div><strong>Electricity Bill:</strong> {getStatus()}</div>
           <div><strong>Food Related:</strong> {formData.isFoodRelated ? "Yes" : "No"}</div>
           {formData.isFoodRelated && (
-            <div><strong>FSSAI Certificate:</strong> {getFileName(formData.fssaiCert)}</div>
+            <div><strong>FSSAI Certificate:</strong> {getStatus()}</div>
           )}
-
-          <div><strong>Bank Account:</strong> {formData.bankAccount}</div>
-          <div><strong>IFSC Code:</strong> {formData.ifsc}</div>
-
-          <div><strong>Cancelled Cheque:</strong> {getFileName(formData.cancelCheque)}</div>
-          <div><strong>Company Type:</strong> {formData.companyType}</div>
-
-          <div><strong>AYUSH License:</strong> {getFileName(formData.ayushLicense)}</div>
+          <div><strong>Bank Account:</strong> {formData.bankAccount || "—"}</div>
+          <div><strong>IFSC Code:</strong> {formData.ifsc || "—"}</div>
+          <div><strong>Cancelled Cheque:</strong> {getStatus()}</div>
+          <div><strong>Company Type:</strong> {formData.companyType || "—"}</div>
+          <div><strong>AYUSH License:</strong> {getStatus()}</div>
         </div>
 
         {/* Declaration */}

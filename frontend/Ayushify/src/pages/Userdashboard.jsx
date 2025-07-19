@@ -29,10 +29,7 @@ export default function Dashboard() {
       {/* Header */}
       <header className="flex justify-between items-center mb-12">
         <div>
-          <h1 className="text-4xl font-bold text-green-900 font-[Tiro Devanagari Sanskrit]">
-            Dashboard
-          </h1>
-          <p className="text-gray-600">
+          <p className="text-center text-gray-600 text-2xl font-semibold">
             Welcome back{userData && `, ${userData.email}`}!
           </p>
         </div>
@@ -79,23 +76,22 @@ export default function Dashboard() {
         <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Application Progress</h2>
           <p className="text-gray-600 mb-6">
-            You have not started your application yet. Click the button below to
-            begin.
+            Not registered yet? register now by clicking the button below.
           </p>
-          <div className="bg-gray-300 rounded-full overflow-hidden h-10 shadow-inner">
+          {/* <div className="bg-gray-300 rounded-full overflow-hidden h-10 shadow-inner">
             <div
               className="bg-gradient-to-r from-green-500 to-green-300 h-full flex items-center justify-center text-white font-bold text-base animate-pulse"
               style={{ width: "0%" }}
             >
-              0%
+              40%
             </div>
-          </div>
+          </div> */}
           <div className="text-center">
            <button
                  onClick={handleStartApplication}
                  className="btn-primary px-8 py-3 rounded-lg font-semibold mt-8 text-lg bg-green-700 hover:bg-green-900 text-white shadow-md"
               >
-                    Start New Application
+                    Register Now
               </button>
           </div>
         </div>

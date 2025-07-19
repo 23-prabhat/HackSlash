@@ -30,7 +30,7 @@ export default function Home() {
       description:
         "Unani medicine is based on the principles of Greek medicine, focusing on the balance of bodily fluids and using natural healing techniques.",
       image:
-        "https://thuym.com/cdn/shop/articles/Blog_Post_Cover_Image_3.png?v=1731505627",
+        "https://images.firstpost.com/wp-content/uploads/2022/02/unani.jpg",
     },
     {
       title: "Siddha",
@@ -44,7 +44,7 @@ export default function Home() {
       description:
         "Homeopathy is a system of alternative medicine based on the principle of treating 'like with like' using natural substances.",
       image:
-        "https://thuym.com/cdn/shop/articles/Blog_Post_Cover_Image_3.png?v=1731505627",
+        "https://images.squarespace-cdn.com/content/v1/5de52adf3d393a7e06368ebd/1576345248813-WYFQQ8HM91HWRSR6MXH4/homeopathy_good_news.jpg",
     },
   ];
 
