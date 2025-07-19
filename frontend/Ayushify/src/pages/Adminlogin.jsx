@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const navigate = useNavigate(); // ✅ Initialize navigation
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,7 +16,6 @@ export default function AdminLogin() {
     // ✅ Save session (optional)
     localStorage.setItem("ayushify_session", JSON.stringify({ email: form.email }));
 
-    // ✅ Navigate to admin dashboard
     navigate("/admin-dashboard");
   };
 

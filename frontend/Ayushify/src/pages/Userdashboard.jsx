@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Chatbot from "../components/Chatbot";
 
 export default function Dashboard() {
   const [userData, setUserData] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const savedSession = localStorage.getItem("ayushify_session");
@@ -23,6 +25,27 @@ export default function Dashboard() {
     localStorage.removeItem("ayushify_session");
     navigate("/auth");
   };
+  
+const FAQS = [
+  {
+    q: "What is the Ministry of AYUSH?",
+    a: "The Ministry develops education, research, and propagation of Ayurveda, Yoga & Naturopathy, Unani, Siddha, Sowa-Rigpa & Homeopathy."  /* :contentReference[oaicite:1]{index=1} */
+  },
+  {
+    q: "What is AYUSH‑64?",
+    a: "AYUSH‑64 is a poly‑herbal formulation originally for malaria, now repurposed for mild to moderate COVID‑19 as an adjunct therapy."  /* :contentReference[oaicite:2]{index=2} */
+  },
+  {
+    q: "Which systems are covered under AYUSH?",
+    a: "It covers Ayurveda, Yoga & Naturopathy, Unani, Siddha, Sowa‑Rigpa, and Homeopathy."  /* :contentReference[oaicite:3]{index=3} */
+  },
+  {
+    q: "Is AYUSH‑64 scientifically proven?",
+    a: "Clinical trials show it improves recovery in mild/moderate COVID‑19 when used alongside standard of care."  /* :contentReference[oaicite:4]{index=4} */
+  }
+];
+
+
 
   return (
     <div className="fade-in-page max-w-7xl mx-auto p-6 lg:p-8 font-[Lora] bg-[#F3EADF] text-[#4E342E] min-h-screen">
@@ -50,6 +73,7 @@ export default function Dashboard() {
                           {userData?.email || "user@example.com"}
                       </p>
                      </div>
+                     <Chatbot />
               <div className="mt-2">
                 <button className="w-full text-left flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
                   Profile
@@ -78,14 +102,7 @@ export default function Dashboard() {
           <p className="text-gray-600 mb-6">
             Not registered yet? register now by clicking the button below.
           </p>
-          {/* <div className="bg-gray-300 rounded-full overflow-hidden h-10 shadow-inner">
-            <div
-              className="bg-gradient-to-r from-green-500 to-green-300 h-full flex items-center justify-center text-white font-bold text-base animate-pulse"
-              style={{ width: "0%" }}
-            >
-              40%
-            </div>
-          </div> */}
+
           <div className="text-center">
            <button
                  onClick={handleStartApplication}
@@ -130,7 +147,34 @@ export default function Dashboard() {
               </li>
             </ul>
           </div>
-
+           <div>
+      {open && (
+        <div className="fixed bottom-20 right-6 w-64 bg-white shadow-lg rounded-lg p-4 z-50">
+          <h4 className="font-bold mb-2">AYUSH FAQ Bot</h4>
+          <div className="space-y-2 max-h-60 overflow-y-auto">
+            {FAQS.map((item, idx) => (
+              <details key={idx} className="border-b pb-2">
+                <summary className="cursor-pointer font-medium">{item.q}</summary>
+                <p className="text-sm mt-1">{item.a}</p>
+              </details>
+            ))}
+          </div>
+          <button
+            onClick={() => setOpen(false)}
+            className="mt-3 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            Close
+          </button>
+        </div>
+      )}
+      <button
+        onClick={() => setOpen(true)}
+        className="fixed bottom-6 right-6 w-12 h-12 bg-green-700 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-800 z-50"
+        title="AYUSH FAQ"
+      >
+        ❓
+      </button>
+    </div>
           <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
             <h3 className="font-bold text-xl text-gray-800 mb-4">Helpful Resources</h3>
             <ul className="space-y-3">

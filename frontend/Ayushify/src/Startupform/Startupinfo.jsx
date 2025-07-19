@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // <-- Import the hook
+import { useNavigate } from "react-router-dom"; 
 
 const StartupDetails = () => {
   const [startupData, setStartupData] = useState({
@@ -10,7 +10,7 @@ const StartupDetails = () => {
     addressProof: null,
   });
 
-  const navigate = useNavigate(); // <-- Initialize the hook
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -24,7 +24,7 @@ const StartupDetails = () => {
   const handleNext = (e) => {
     e.preventDefault();
     console.log("Startup Details Submitted:", startupData);
-    navigate("/register/startup/documents"); // <-- Use navigate function
+    navigate("/register/startup/documents"); 
   };
 
   return (

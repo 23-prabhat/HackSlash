@@ -10,7 +10,7 @@ const StartupPreview = ({ formData = {}, onSubmitFinal }) => {
     e.preventDefault();
     if (agreed) {
       console.log("Final Submission Data:", formData);
-      onSubmitFinal?.(); // Optional callback
+      onSubmitFinal?.(); 
       setSuccessMessage(true);
       setTimeout(() => {
         navigate("/dashboard");
@@ -20,7 +20,6 @@ const StartupPreview = ({ formData = {}, onSubmitFinal }) => {
     }
   };
 
-  // Always return ✅ Completed (even if file is missing)
   const getStatus = () => "✅ Completed";
 
   return (

@@ -50,8 +50,7 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center text-center bg-gradient-to-b from-green-50 to-white">
-      {/* Header */}
-      {/* <Header onRoleSelect={(role) => onNavigate(role.toLowerCase())} onNavigate={onNavigate} /> */}
+      
 
       {/* Welcome Section */}
       <div className="w-full flex flex-col items-center justify-center py-16">

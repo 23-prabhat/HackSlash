@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const StartupDocuments = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigate function
+  const navigate = useNavigate(); 
 
   const [formData, setFormData] = useState({
     companyPan: null,
@@ -31,7 +31,6 @@ const StartupDocuments = () => {
   const handleNext = (e) => {
     e.preventDefault();
     console.log("Startup Documents Data:", formData);
-    // ✅ Navigate to the preview page
     navigate("/register/startup/preview");
   };
 
@@ -174,20 +173,6 @@ const StartupDocuments = () => {
               </label>
             </div>
           </div>
-
-          {/* AYUSH License Upload */}
-          <div className="md:col-span-2">
-            <label className="block font-medium mb-1">AYUSH License (jpg/pdf/png)</label>
-            <input
-              type="file"
-              name="ayushLicense"
-              accept=".jpg,.jpeg,.png,.pdf"
-              required
-              onChange={handleChange}
-              className="w-full border px-4 py-2 rounded-md"
-            />
-          </div>
-
           {/* Next Button */}
           <div className="md:col-span-2 flex justify-end">
             <button

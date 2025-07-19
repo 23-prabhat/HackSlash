@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigate hook
+import { useNavigate } from "react-router-dom"; 
 
 export default function OfficialLogin() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,9 +13,8 @@ export default function OfficialLogin() {
     e.preventDefault();
     console.log("Official Login:", form);
     
-    // Simulate success (replace this with real login logic later)
     alert("Login Successful");
-    navigate("/official-dashboard"); // ✅ Navigate after login
+    navigate("/official-dashboard"); 
   };
 
   return (

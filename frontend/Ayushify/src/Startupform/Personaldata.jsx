@@ -33,7 +33,6 @@ const StartupPersonalInfo = () => {
   return (
     <div className="min-h-screen bg-green-50 flex items-center justify-center p-4">
       <div className="bg-white shadow-md rounded-lg w-full max-w-4xl p-8 relative">
-        {/* Progress Bar */}
         <div className="absolute top-4 right-4 w-32">
           <div className="text-sm text-gray-600 mb-1 text-right">Step 1 of 4</div>
           <div className="w-full bg-gray-200 rounded-full h-2">

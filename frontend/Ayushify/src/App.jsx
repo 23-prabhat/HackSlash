@@ -27,7 +27,7 @@ function Main() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Fix: define the form state inside Main
+ 
   const [startupFormData, setStartupFormData] = React.useState({
     name: "",
     dob: "",
@@ -62,7 +62,7 @@ function Main() {
     }
   };
 
-  // ✅ Hide Header on these routes
+  
   const hideHeader =
     ["/auth", "/admin", "/official", "/dashboard",
      "/register/startup/personal",
@@ -88,7 +88,7 @@ function Main() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/official-dashboard" element={<OfficialDashboard />} />
 
-        {/* ✅ Pass formData and setter to all form steps */}
+        
         <Route
           path="/register/startup/personal"
           element={<StartupPersonalInfo formData={startupFormData} setFormData={setStartupFormData} />}
