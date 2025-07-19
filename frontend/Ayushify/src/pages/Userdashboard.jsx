@@ -1,0 +1,181 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function Dashboard() {
+  const [userData, setUserData] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedSession = localStorage.getItem("ayushify_session");
+    if (!savedSession) {
+      navigate("/dashboard");
+    } else {
+      setUserData(JSON.parse(savedSession));
+    }
+  }, [navigate]);
+
+  const handleStartApplication = () => {
+  navigate("/register/startup/personal");
+};
+
+  const handleLogout = () => {
+    localStorage.removeItem("ayushify_session");
+    navigate("/auth");
+  };
+
+  return (
+    <div className="fade-in-page max-w-7xl mx-auto p-6 lg:p-8 font-[Lora] bg-[#F3EADF] text-[#4E342E] min-h-screen">
+      {/* Header */}
+      <header className="flex justify-between items-center mb-12">
+        <div>
+          <h1 className="text-4xl font-bold text-green-900 font-[Tiro Devanagari Sanskrit]">
+            Dashboard
+          </h1>
+          <p className="text-gray-600">
+            Welcome back{userData && `, ${userData.email}`}!
+          </p>
+        </div>
+
+        <div className="relative">
+          <button
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="w-12 h-12 bg-green-800 rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-green-900 transition-colors"
+          >
+            {userData?.email?.[0]?.toUpperCase() || "U"}
+          </button>
+
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl z-10 py-2 border border-gray-200">
+             <div className="px-4 py-3 border-b border-gray-200">
+                      <p className="text-xs uppercase text-gray-500 font-semibold">Signed in as</p>
+                      <p className="text-sm font-medium text-green-800 break-all">
+                          {userData?.email || "user@example.com"}
+                      </p>
+                     </div>
+              <div className="mt-2">
+                <button className="w-full text-left flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  Profile
+                </button>
+                <button className="w-full text-left flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  Settings
+                </button>
+              </div>
+              <div className="border-t border-gray-200 my-2"></div>
+              <button
+                    onClick={handleLogout}
+                    className="w-full text-left flex items-center px-4 py-2 text-red-600 hover:bg-gray-100"
+                       >
+                     Logout
+                       </button>
+
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main>
+        <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Application Progress</h2>
+          <p className="text-gray-600 mb-6">
+            You have not started your application yet. Click the button below to
+            begin.
+          </p>
+          <div className="bg-gray-300 rounded-full overflow-hidden h-10 shadow-inner">
+            <div
+              className="bg-gradient-to-r from-green-500 to-green-300 h-full flex items-center justify-center text-white font-bold text-base animate-pulse"
+              style={{ width: "0%" }}
+            >
+              0%
+            </div>
+          </div>
+          <div className="text-center">
+           <button
+                 onClick={handleStartApplication}
+                 className="btn-primary px-8 py-3 rounded-lg font-semibold mt-8 text-lg bg-green-700 hover:bg-green-900 text-white shadow-md"
+              >
+                    Start New Application
+              </button>
+          </div>
+        </div>
+
+        {/* Widgets */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+            <h3 className="font-bold text-xl text-gray-800 mb-4">Recent Activity</h3>
+            <ul className="space-y-4">
+              <li className="flex items-center">
+                <span className="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center mr-4">
+                  ✓
+                </span>
+                <div>
+                  <p className="font-semibold">Account Created</p>
+                  <p className="text-sm text-gray-500">Welcome to AYUSHify!</p>
+                </div>
+              </li>
+              <li className="flex items-center opacity-60">
+                <span className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                  ?
+                </span>
+                <div>
+                  <p className="font-semibold text-gray-600">Verify Email Address</p>
+                  <p className="text-sm text-gray-500">Awaiting verification</p>
+                </div>
+              </li>
+              <li className="flex items-center opacity-60">
+                <span className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                  ?
+                </span>
+                <div>
+                  <p className="font-semibold text-gray-600">Start Application</p>
+                  <p className="text-sm text-gray-500">Awaiting first step</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+            <h3 className="font-bold text-xl text-gray-800 mb-4">Helpful Resources</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="flex items-center text-green-800 hover:underline">
+                  📄 Document Checklist
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center text-green-800 hover:underline">
+                  ❓ Registration FAQs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center text-green-800 hover:underline">
+                  📞 Contact Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="mt-16 pt-8 border-t border-gray-300 text-center text-gray-600 text-sm">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <a href="#" className="hover:text-green-800 hover:underline">
+            About AYUSHify
+          </a>
+          <a href="#" className="hover:text-green-800 hover:underline">
+            Ministry of AYUSH
+          </a>
+          <a href="#" className="hover:text-green-800 hover:underline">
+            Contact Us
+          </a>
+          <a href="#" className="hover:text-green-800 hover:underline">
+            Terms of Service
+          </a>
+        </div>
+        <p>&copy; 2025 AYUSHify Portal. All Rights Reserved.</p>
+      </footer>
+    </div>
+  );
+}

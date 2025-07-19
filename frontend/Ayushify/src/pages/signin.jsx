@@ -8,13 +8,13 @@ export default function SignUp() {
   const handleSignUp = (e) => {
     e.preventDefault();
     alert("Account created successfully! Navigating to user dashboard");
-    navigate("/user-dashboard");
+    navigate("/dashboard");
   };
 
   const handleSignIn = (e) => {
     e.preventDefault();
     alert("Sign in successful! Navigating to dashboard");
-    navigate("/user-dashboard");
+    navigate("/dashboard");
   };
 
   return (
